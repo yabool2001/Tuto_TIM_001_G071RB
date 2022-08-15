@@ -58,10 +58,7 @@ static void MX_TIM6_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef *htim )
-{
-	HAL_GPIO_TogglePin ( GREEN_GPIO_Port, GREEN_Pin ) ;
-}
+
 /* USER CODE END 0 */
 
 /**
@@ -272,6 +269,13 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_TIM_PeriodElapsedCallback ( TIM_HandleTypeDef *htim )
+{
+	if ( htim->Instance == TIM6 )
+	{
+		HAL_GPIO_TogglePin ( GREEN_GPIO_Port, GREEN_Pin ) ;
+	}
+}
 
 /* USER CODE END 4 */
 
